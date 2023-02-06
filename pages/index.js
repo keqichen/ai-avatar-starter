@@ -1,20 +1,41 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import buildspaceLogo from '../assets/buildspace-logo.png';
 
 const Home = () => {
+  const [input, setInput] = useState("");
+
+  const onChange = (event)=>{
+    setInput (event.target.value);
+  }
+
+  const generateAction = async () => {
+    console.log('Generating...');	
+  }
+
   return (
     <div className="root">
       <Head>
-        <title>AI Avatar Generator | buildspace</title>
+        <title>My AI Avatar Generator | buildspace</title>
       </Head>
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1>your generator one-liner</h1>
+            <h1>My AI generator</h1>
           </div>
           <div className="header-subtitle">
-            <h2>description of your generator</h2>
+            <h2>Turn me into anyone you want! Make sure you refer to me as "keqi" in the prompt</h2>
+          </div>
+          <div className="prompt-container">
+            <input className="prompt-box" value={input} onChange={onChange}/>
+            <div className="prompt-buttons">
+              <a className="generate-button" onClick={generateAction}>
+              <div className="generate">
+              <p>Generate</p>
+            </div>
+    </a>
+  </div>
           </div>
         </div>
       </div>
